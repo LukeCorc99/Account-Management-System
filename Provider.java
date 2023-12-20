@@ -14,12 +14,18 @@ public class Provider {
 				// 2. Wait for connection
 				System.out.println("Waiting for connection");
 
-				// Accept a connection from a client
+				// Create a new thread (ServerThread) for each connection to handle communication and accept a connection from a client
 				Socket connection = providerSocket.accept();
-
-				// Create a new thread (ServerThread) for each connection to handle communication
 				ServerThread T1 = new ServerThread(connection, myList);
 				T1.start();
+				
+				Socket connection2 = providerSocket.accept();
+				ServerThread T2 = new ServerThread(connection2, myList);
+				T2.start();
+				
+				Socket connection3 = providerSocket.accept();
+				ServerThread T3 = new ServerThread(connection3, myList);
+				T3.start();
 			}
 			// The serverSocket.close() is commented out because the server runs indefinitely,
 			// but you may want to close it in a different context (e.g., when the server is stopped).
