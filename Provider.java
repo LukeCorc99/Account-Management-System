@@ -5,7 +5,7 @@ public class Provider {
 	
 	public static void main(String args[]) {
 		ServerSocket providerSocket;
-		Lib myList = new Lib(); // Create an instance of the Lib class for book operations
+		Logins myList = new Logins(); // Create an instance of the Lib class for book operations
 		try {
 			// 1. Create a ServerSocket on port 2006 with a backlog of 10 connections
 			providerSocket = new ServerSocket(2006, 10);

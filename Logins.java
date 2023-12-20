@@ -8,18 +8,18 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-public class Lib {
+public class Logins {
 
-    private LinkedList<Book> myList;
+    private LinkedList<Account> myList;
 
-    // Constructor to initialize the library and populate the list from the file
-    public Lib() {
+    // Initialize logins and add to file
+    public Logins() {
         String line;
-        Book tempBook;
+        Account tempAccount;
         String temp[] = new String[3];
-        myList = new LinkedList<Book>();
+        myList = new LinkedList<Account>();
 
-        // Populate the list from the file...
+        // Populate the list from the file
         try {
             FileReader fR = new FileReader("logins.txt");
             BufferedReader bR = new BufferedReader(fR);
@@ -27,12 +27,12 @@ public class Lib {
             while ((line = bR.readLine()) != null) {
                 StringTokenizer st = new StringTokenizer(line, " ");
 
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < 6; i++) {
                     temp[i] = st.nextToken();
                 }
 
-                tempBook = new Book(temp[1], temp[0], Float.parseFloat(temp[2]));
-                myList.add(tempBook);
+                tempAccount = new Account(temp[1], temp[0], temp[2], temp[3], temp[4], Float.parseFloat(temp[5]));
+                myList.add(tempAccount);
             }
         } catch (FileNotFoundException e) {
             // Handle the case where the file is not found
@@ -43,16 +43,16 @@ public class Lib {
         }
     }
 
-    // Method to add a book to the library
-    public synchronized void addBook(String t, String a, String p) {
-        Book temp = new Book(a, t, Float.parseFloat(p));
+    // Method to add an account to the logins data
+    public synchronized void addAccount(String n, String pps, String em, String p, String a, String i) {
+        Account temp = new Account(n, pps, em, p, a, Float.parseFloat(i));
         String line;
         myList.add(temp);
 
         try {
             FileWriter fR = new FileWriter("logins.txt", true); // Append mode
             BufferedWriter bR = new BufferedWriter(fR);
-            line = t + " " + a + " " + p + "\n";
+            line = n + " " + pps + " " + em + " " + p + " " + a + " " + i + "\n";
             bR.append(line);
             bR.close();
             fR.close();
@@ -62,16 +62,16 @@ public class Lib {
         }
     }
 
-    // Method to search for a book by title
-    public synchronized String searchBook(String t) {
-        Book temp;
+    // Method to search for an account by name
+    public synchronized String searchAccount(String t) {
+        Account temp;
         int found = 0;
-        Iterator<Book> i = myList.iterator();
+        Iterator<Account> i = myList.iterator();
         String result = "Not found";
 
         while (i.hasNext() && found == 0) {
             temp = i.next();
-            if (temp.getTitle().equalsIgnoreCase(t)) {
+            if (temp.getName().equalsIgnoreCase(t)) {
                 result = temp.toString();
                 found = 1;
             }
@@ -80,10 +80,10 @@ public class Lib {
         return result;
     }
 
-    // Method to get a list of all books in the library
-    public synchronized String[] listOfBooks() {
-        Book temp;
-        Iterator<Book> i = myList.iterator();
+    // Method to get a list of all accounts in database
+    public synchronized String[] listOfAccounts() {
+        Account temp;
+        Iterator<Account> i = myList.iterator();
         String[] result = new String[myList.size()];
         int count = 0;
 
