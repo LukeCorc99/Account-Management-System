@@ -82,18 +82,24 @@ public class Requester {
                         sendMessage(response);
 
                         message = (String) in.readObject();
+                        System.out.println(message);
+
+                        response = input.nextLine();
+                        sendMessage(response);
+
+                        message = (String) in.readObject();
 
                         if (message.equalsIgnoreCase("Not found")) {
                             System.out.println(message);
                         } else {
                             String[] result = message.split("[*]");
-
+                            System.out.println("Successfully logged in!");
                             System.out.println("Name: " + result[0]);
                             System.out.println("PPS Number: " + result[1]);
                             System.out.println("Email: " + result[2]);
-                            System.out.println("Password: " + result[3]);
+                            System.out.println("Password: (hidden)");
                             System.out.println("Address: " + result[4]);
-                            System.out.println("Initial Balance: " + result[5]);
+                            System.out.println("Initial Balance: " + result[5] + "\n");
                         }
                     } else if (response.equalsIgnoreCase("3")) {
 
@@ -106,12 +112,12 @@ public class Requester {
 
                             String[] result = message.split("[*]");
 
-                            System.out.println("Name " + result[0]);
-                            System.out.println("PPS Number " + result[1]);
-                            System.out.println("Email " + result[2]);
-                            System.out.println("Password " + result[3]);
-                            System.out.println("Address " + result[4]);
-                            System.out.println("Initial Balance " + result[5]);
+                            System.out.println("Name: " + result[0]);
+                            System.out.println("PPS Number: " + result[1]);
+                            System.out.println("Email: " + result[2]);
+                            System.out.println("Password: (hidden)");
+                            System.out.println("Address: " + result[4]);
+                            System.out.println("Initial Balance: " + result[5] + "\n");
 
                         }
                     }

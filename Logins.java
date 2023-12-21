@@ -67,7 +67,7 @@ public class Logins {
     }
 
     // Method to search for an account by name
-    public synchronized String searchAccount(String t) {
+    public synchronized String searchAccount(String name, String password) {
         Account temp;
         int found = 0;
         Iterator<Account> i = myList.iterator();
@@ -75,7 +75,7 @@ public class Logins {
 
         while (i.hasNext() && found == 0) {
             temp = i.next();
-            if (temp.getName().equalsIgnoreCase(t)) {
+            if (temp.getName().equalsIgnoreCase(name) && temp.getPassword().equals(password)) {
                 result = temp.toString();
                 found = 1;
             }

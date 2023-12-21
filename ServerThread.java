@@ -10,9 +10,10 @@ public class ServerThread extends Thread {
     String message1;
     String message2;
     String message3;
-	String message4;
+    String message4;
     String message5;
     String message6;
+    String message7;
     Logins allLogins;
 
     // Initialise ServerThread with an instance of the socket and Logins
@@ -31,10 +32,10 @@ public class ServerThread extends Thread {
             // Server Communications
             do {
                 // Prompt client to enter choice
-                sendMessage("Please enter 1 to Register an Account or 2 to Search for an Account or 3 for All Accounts");
+                sendMessage("Please enter 1 to Register an Account or 2 to Login to an Account");
                 message = (String) in.readObject();
-                
-				// Register account
+
+                // Register account
                 if (message.equalsIgnoreCase("1")) {
                     sendMessage("Please enter name:");
                     message1 = (String) in.readObject();
@@ -45,7 +46,7 @@ public class ServerThread extends Thread {
                     sendMessage("Please enter Email:");
                     message3 = (String) in.readObject();
 
-					sendMessage("Please enter Password:");
+                    sendMessage("Please enter Password:");
                     message4 = (String) in.readObject();
 
                     sendMessage("Please enter Address:");
@@ -57,24 +58,30 @@ public class ServerThread extends Thread {
                     // Register account
                     allLogins.addAccount(message1, message2, message3, message4, message5, message6);
 
-			    // Account search
+                     // Account search
                 } else if (message.equalsIgnoreCase("2")) {
                     sendMessage("Please enter the name");
                     message1 = (String) in.readObject();
 
-                    // Search for name and return 
-                    String result = allLogins.searchAccount(message1);
-                    sendMessage(result);
+                    sendMessage("Please enter the password");
+                    message2 = (String) in.readObject();
 
-				// Display all accounts
-                } else if (message.equalsIgnoreCase("3")) {
+                    // Search for name and return 
+                    String result = allLogins.searchAccount(message1, message2);
+                    sendMessage(result);
+                    
+                 } else if (message.equalsIgnoreCase("3")) {
                     String[] temp = allLogins.listOfAccounts();
                     sendMessage("" + temp.length);
 
                     for (int i = 0; i < temp.length; i++) {
                         sendMessage(temp[i]);
                     }
-                }
+				} 
+            
+                
+             
+                
 
                 // Prompt client to enter 1 to repeat or any other value to exit
                 sendMessage("Please enter 1 to repeat or any other value to exit");
