@@ -41,37 +41,37 @@ public class Requester {
                         message = (String) in.readObject();
                         System.out.println(message);
 
-                        response = input.next();
+                        response = input.nextLine();
                         sendMessage(response);
 
                         message = (String) in.readObject();
                         System.out.println(message);
 
-                        response = input.next();
+                        response = input.nextLine();
                         sendMessage(response);
 
                         message = (String) in.readObject();
                         System.out.println(message);
 
-                        response = input.next();
+                        response = input.nextLine();
                         sendMessage(response);
 
 						message = (String) in.readObject();
                         System.out.println(message);
 
-                        response = input.next();
+                        response = input.nextLine();
                         sendMessage(response);
 
                         message = (String) in.readObject();
                         System.out.println(message);
 
-                        response = input.next();
+                        response = input.nextLine();
                         sendMessage(response);
 
                         message = (String) in.readObject();
                         System.out.println(message);
 
-                        response = input.next();
+                        response = input.nextLine();
                         sendMessage(response);
 
                     } else if (response.equalsIgnoreCase("2")) {

@@ -25,6 +25,7 @@ public class Account {
                 "Name: " + name + "\n" +
                 "PPS Number: " + ppsNumber + "\n" +
                 "Email: " + email + "\n" +
+                "Password: " + password + "\n" +
                 "Address: " + address + "\n" +
                 "Initial Balance: " + initialBalance;
     }
