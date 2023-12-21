@@ -56,7 +56,7 @@ public class Requester {
                         response = input.nextLine();
                         sendMessage(response);
 
-						message = (String) in.readObject();
+                        message = (String) in.readObject();
                         System.out.println(message);
 
                         response = input.nextLine();
@@ -88,14 +88,15 @@ public class Requester {
                         } else {
                             String[] result = message.split("[*]");
 
-                            System.out.println("Name " + result[0]);
-                            System.out.println("PPS Number " + result[1]);
-                            System.out.println("Email " + result[2]);
-							System.out.println("Password " + result[3]);
-                            System.out.println("Address " + result[4]);
-                            System.out.println("Initial Balance " + result[5]);
+                            System.out.println("Name: " + result[0]);
+                            System.out.println("PPS Number: " + result[1]);
+                            System.out.println("Email: " + result[2]);
+                            System.out.println("Password: " + result[3]);
+                            System.out.println("Address: " + result[4]);
+                            System.out.println("Initial Balance: " + result[5]);
                         }
                     } else if (response.equalsIgnoreCase("3")) {
+
                         message = (String) in.readObject();
 
                         int temp = Integer.parseInt(message);
@@ -108,9 +109,10 @@ public class Requester {
                             System.out.println("Name " + result[0]);
                             System.out.println("PPS Number " + result[1]);
                             System.out.println("Email " + result[2]);
-							System.out.println("Password " + result[3]);
+                            System.out.println("Password " + result[3]);
                             System.out.println("Address " + result[4]);
                             System.out.println("Initial Balance " + result[5]);
+
                         }
                     }
 

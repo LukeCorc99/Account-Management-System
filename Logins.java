@@ -16,23 +16,28 @@ public class Logins {
     public Logins() {
         String line;
         Account tempAccount;
+        String temp[] = new String[6];
         myList = new LinkedList<Account>();
 
         // Populate the list from the file
-        try {
-            FileReader fR = new FileReader("logins.txt");
-            BufferedReader bR = new BufferedReader(fR);
-        
-            while ((line = bR.readLine()) != null) {
-                String[] parts = line.split("\\s+", 6);
-        
-                if (parts.length == 6) {
-                    tempAccount = new Account(parts[0], parts[1], parts[2], parts[3], parts[4], Float.parseFloat(parts[5]));
-                    myList.add(tempAccount);
-                } else {
-                    System.err.println("Error parsing line: " + line);
-                }
-            }
+		try 
+		{
+			FileReader fR = new FileReader("logins.txt");
+			BufferedReader bR = new BufferedReader(fR);
+			
+			while((line=bR.readLine())!=null)
+			{
+				StringTokenizer st = new StringTokenizer(line," ");
+				
+				for(int i=0;i<6;i++)
+				{
+					temp[i] = st.nextToken();
+				}
+				
+				tempAccount = new Account(temp[0],temp[1],temp[2],temp[3],temp[4],temp[5]);
+				myList.add(tempAccount);
+			}
+		
         } catch (FileNotFoundException e) {
             // Handle the case where the file is not found
             e.printStackTrace();
@@ -44,7 +49,7 @@ public class Logins {
 
     // Method to add an account to the logins data
     public synchronized void addAccount(String n, String pps, String em, String p, String a, String i) {
-        Account temp = new Account(n, pps, em, p, a, Float.parseFloat(i));
+        Account temp = new Account(n, pps, em, p, a, i);
         String line;
         myList.add(temp);
 

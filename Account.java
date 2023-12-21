@@ -6,10 +6,10 @@ public class Account {
     private String email;
     private String password;
     private String address;
-    private float initialBalance;
+    private String initialBalance;
 
     // Constructor for all details
-    public Account(String name, String ppsNumber, String email, String password, String address, float initialBalance) {
+    public Account(String name, String ppsNumber, String email, String password, String address, String initialBalance) {
         super();
         this.name = name;
         this.ppsNumber = ppsNumber;
@@ -19,16 +19,11 @@ public class Account {
         this.initialBalance = initialBalance;
     }
 
-    // Return account prompt
-    public String toString() {
-        return "Account Information:\n" +
-                "Name: " + name + "\n" +
-                "PPS Number: " + ppsNumber + "\n" +
-                "Email: " + email + "\n" +
-                "Password: " + password + "\n" +
-                "Address: " + address + "\n" +
-                "Initial Balance: " + initialBalance;
-    }
+    // Return account prompt with delimiter
+public String toString() {
+    return name + "*" + ppsNumber + "*"+ email +"*" + password + "*" + address + "*" + initialBalance;
+}
+
 
     // Getter and setter methods
     public String getName() {
@@ -71,11 +66,11 @@ public class Account {
         this.address = address;
     }
 
-    public float getInitialBalance() {
+    public String getInitialBalance() {
         return initialBalance;
     }
 
-    public void setInitialBalance(float initialBalance) {
+    public void setInitialBalance(String initialBalance) {
         this.initialBalance = initialBalance;
     }
 }
