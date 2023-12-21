@@ -68,12 +68,11 @@ public class ServerThread extends Thread {
 
                     String result = allLogins.searchAccount(message1, message2);
                     sendMessage(result);
+   
+            }     
 
-               
-                    
-                     // Return all registered accounts
+            // Return all registered accounts
                     if (message.equalsIgnoreCase("3")) {
-                    sendMessage("success");
                     String[] temp = allLogins.listOfAccounts();
                     sendMessage("" + temp.length);
 
@@ -82,8 +81,7 @@ public class ServerThread extends Thread {
                     }
                     
                     
-                }       
-            }     
+                }    
 
                 // Prompt client to enter 1 to repeat or any other value to exit
                 sendMessage("Please enter 1 to repeat or any other value to exit");

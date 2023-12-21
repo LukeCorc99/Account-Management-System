@@ -100,28 +100,30 @@ public class Requester {
                             System.out.println("Password: (hidden)");
                             System.out.println("Address: " + result[4]);
                             System.out.println("Initial Balance: " + result[5] + "\n");
-                            
 
-                            if (response.equalsIgnoreCase("3")) {
+                            //
 
-                                message = (String) in.readObject();
+                        }
 
-                                int temp = Integer.parseInt(message);
+                    }
+                    if (response.equalsIgnoreCase("3")) {
 
-                                for (int i = 0; i < temp; i++) {
-                                    message = (String) in.readObject();
+                        message = (String) in.readObject();
 
-                                    String[] result1 = message.split("[*]");
+                        int temp = Integer.parseInt(message);
 
-                                    System.out.println("Name: " + result1[0]);
-                                    System.out.println("PPS Number: " + result1[1]);
-                                    System.out.println("Email: " + result1[2]);
-                                    System.out.println("Password: (hidden)");
-                                    System.out.println("Address: " + result1[4]);
-                                    System.out.println("Initial Balance: " + result1[5] + "\n");
+                        for (int i = 0; i < temp; i++) {
+                            message = (String) in.readObject();
 
-                                }
-                            }
+                            String[] result1 = message.split("[*]");
+
+                            System.out.println("Name: " + result1[0]);
+                            System.out.println("PPS Number: " + result1[1]);
+                            System.out.println("Email: " + result1[2]);
+                            System.out.println("Password: (hidden)");
+                            System.out.println("Address: " + result1[4]);
+                            System.out.println("Initial Balance: " + result1[5] + "\n");
+
                         }
                     }
 
