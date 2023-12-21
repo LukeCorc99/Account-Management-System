@@ -68,6 +68,20 @@ public class ServerThread extends Thread {
 
                     String result = allLogins.searchAccount(message1, message2);
                     sendMessage(result);
+
+                    message3 = (String) in.readObject();
+                    
+                    // Return all registered accounts
+                    if (message3.equalsIgnoreCase("1")) {
+                    String[] temp = allLogins.listOfAccounts();
+                    sendMessage("" + temp.length);
+
+                    for (int i = 0; i < temp.length; i++) {
+                        sendMessage(temp[i]);
+                    }
+                    
+                    
+                } 
    
             }     
 

@@ -8,6 +8,7 @@ public class Requester {
     ObjectInputStream in;
     String message;
     String response;
+    String response2;
     Scanner input;
 
     Requester() {
@@ -101,7 +102,33 @@ public class Requester {
                             System.out.println("Address: " + result[4]);
                             System.out.println("Initial Balance: " + result[5] + "\n");
 
-                            //
+                            System.out.println("Enter 1 to show all registered users");
+
+                    // Get user response
+                    response2 = input.nextLine();
+                    sendMessage(response2);
+
+
+                            if (response2.equalsIgnoreCase("1")) {
+
+                        message = (String) in.readObject();
+
+                        int temp = Integer.parseInt(message);
+
+                        for (int i = 0; i < temp; i++) {
+                            message = (String) in.readObject();
+
+                            String[] result1 = message.split("[*]");
+
+                            System.out.println("Name: " + result1[0]);
+                            System.out.println("PPS Number: " + result1[1]);
+                            System.out.println("Email: " + result1[2]);
+                            System.out.println("Password: (hidden)");
+                            System.out.println("Address: " + result1[4]);
+                            System.out.println("Initial Balance: " + result1[5] + "\n");
+
+                           }
+                        }
 
                         }
 
