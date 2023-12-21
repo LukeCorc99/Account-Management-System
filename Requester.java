@@ -100,25 +100,28 @@ public class Requester {
                             System.out.println("Password: (hidden)");
                             System.out.println("Address: " + result[4]);
                             System.out.println("Initial Balance: " + result[5] + "\n");
-                        }
-                    } else if (response.equalsIgnoreCase("3")) {
+                            
 
-                        message = (String) in.readObject();
+                            if (response.equalsIgnoreCase("3")) {
 
-                        int temp = Integer.parseInt(message);
+                                message = (String) in.readObject();
 
-                        for (int i = 0; i < temp; i++) {
-                            message = (String) in.readObject();
+                                int temp = Integer.parseInt(message);
 
-                            String[] result = message.split("[*]");
+                                for (int i = 0; i < temp; i++) {
+                                    message = (String) in.readObject();
 
-                            System.out.println("Name: " + result[0]);
-                            System.out.println("PPS Number: " + result[1]);
-                            System.out.println("Email: " + result[2]);
-                            System.out.println("Password: (hidden)");
-                            System.out.println("Address: " + result[4]);
-                            System.out.println("Initial Balance: " + result[5] + "\n");
+                                    String[] result1 = message.split("[*]");
 
+                                    System.out.println("Name: " + result1[0]);
+                                    System.out.println("PPS Number: " + result1[1]);
+                                    System.out.println("Email: " + result1[2]);
+                                    System.out.println("Password: (hidden)");
+                                    System.out.println("Address: " + result1[4]);
+                                    System.out.println("Initial Balance: " + result1[5] + "\n");
+
+                                }
+                            }
                         }
                     }
 

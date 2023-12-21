@@ -13,8 +13,8 @@ public class ServerThread extends Thread {
     String message4;
     String message5;
     String message6;
-    String message7;
     Logins allLogins;
+    int loggedIn = 0;
 
     // Initialise ServerThread with an instance of the socket and Logins
     public ServerThread(Socket s, Logins login) {
@@ -58,7 +58,7 @@ public class ServerThread extends Thread {
                     // Register account
                     allLogins.addAccount(message1, message2, message3, message4, message5, message6);
 
-                     // Account search
+                    // Login
                 } else if (message.equalsIgnoreCase("2")) {
                     sendMessage("Please enter the name");
                     message1 = (String) in.readObject();
@@ -66,22 +66,24 @@ public class ServerThread extends Thread {
                     sendMessage("Please enter the password");
                     message2 = (String) in.readObject();
 
-                    // Search for name and return 
                     String result = allLogins.searchAccount(message1, message2);
                     sendMessage(result);
+
+               
                     
-                 } else if (message.equalsIgnoreCase("3")) {
+                     // Return all registered accounts
+                    if (message.equalsIgnoreCase("3")) {
+                    sendMessage("success");
                     String[] temp = allLogins.listOfAccounts();
                     sendMessage("" + temp.length);
 
                     for (int i = 0; i < temp.length; i++) {
                         sendMessage(temp[i]);
                     }
-				} 
-            
-                
-             
-                
+                    
+                    
+                }       
+            }     
 
                 // Prompt client to enter 1 to repeat or any other value to exit
                 sendMessage("Please enter 1 to repeat or any other value to exit");

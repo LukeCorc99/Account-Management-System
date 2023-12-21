@@ -34,7 +34,7 @@ public class Logins {
 					temp[i] = st.nextToken();
 				}
 				
-				tempAccount = new Account(temp[0],temp[1],temp[2],temp[3],temp[4],temp[5]);
+				tempAccount = new Account(temp[0],temp[1],temp[2],temp[3],temp[4],Float.parseFloat(temp[5]));
 				myList.add(tempAccount);
 			}
 		
@@ -49,12 +49,12 @@ public class Logins {
 
     // Method to add an account to the logins data
     public synchronized void addAccount(String n, String pps, String em, String p, String a, String i) {
-        Account temp = new Account(n, pps, em, p, a, i);
+        Account temp = new Account(n, pps, em, p, a, Float.parseFloat(i));
         String line;
         myList.add(temp);
 
         try {
-            FileWriter fR = new FileWriter("logins.txt", true); // Append mode
+            FileWriter fR = new FileWriter("logins.txt", true);
             BufferedWriter bR = new BufferedWriter(fR);
             line = n + " " + pps + " " + em + " " + p + " " + a + " " + i + "\n";
             bR.append(line);

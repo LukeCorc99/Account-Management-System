@@ -6,10 +6,10 @@ public class Account {
     private String email;
     private String password;
     private String address;
-    private String initialBalance;
+    private float initialBalance;
 
     // Constructor for all details
-    public Account(String name, String ppsNumber, String email, String password, String address, String initialBalance) {
+    public Account(String name, String ppsNumber, String email, String password, String address, float initialBalance) {
         super();
         this.name = name;
         this.ppsNumber = ppsNumber;
@@ -66,11 +66,11 @@ public String toString() {
         this.address = address;
     }
 
-    public String getInitialBalance() {
+    public float getInitialBalance() {
         return initialBalance;
     }
 
-    public void setInitialBalance(String initialBalance) {
+    public void setInitialBalance(float initialBalance) {
         this.initialBalance = initialBalance;
     }
 }
