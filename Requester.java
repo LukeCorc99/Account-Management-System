@@ -16,16 +16,14 @@ public class Requester {
 
     void run() {
         try {
-            // Step 1: Create a socket to connect to the server
+            // Create a socket to connect to the server
             requestSocket = new Socket("127.0.0.1", 2006);
             System.out.println("Connected to localhost");
 
-            // Step 2: Get Input and Output streams for communication with the server
+            // Get Input and Output streams for communication with the server
             out = new ObjectOutputStream(requestSocket.getOutputStream());
             out.flush();
             in = new ObjectInputStream(requestSocket.getInputStream());
-
-            // Step 3: Communicate with the server
 
             // Client Communications
             try {
@@ -40,7 +38,6 @@ public class Requester {
                     sendMessage(response);
 
                     if (response.equalsIgnoreCase("1")) {
-                        // Additional communication for option 1
                         message = (String) in.readObject();
                         System.out.println(message);
 
@@ -58,8 +55,26 @@ public class Requester {
 
                         response = input.next();
                         sendMessage(response);
+
+						message = (String) in.readObject();
+                        System.out.println(message);
+
+                        response = input.next();
+                        sendMessage(response);
+
+                        message = (String) in.readObject();
+                        System.out.println(message);
+
+                        response = input.next();
+                        sendMessage(response);
+
+                        message = (String) in.readObject();
+                        System.out.println(message);
+
+                        response = input.next();
+                        sendMessage(response);
+
                     } else if (response.equalsIgnoreCase("2")) {
-                        // Additional communication for option 2
                         message = (String) in.readObject();
                         System.out.println(message);
 
@@ -73,12 +88,14 @@ public class Requester {
                         } else {
                             String[] result = message.split("[*]");
 
-                            System.out.println("Title " + result[0]);
-                            System.out.println("Author " + result[1]);
-                            System.out.println("Price " + result[2]);
+                            System.out.println("Name " + result[0]);
+                            System.out.println("PPS Number " + result[1]);
+                            System.out.println("Email " + result[2]);
+							System.out.println("Password " + result[3]);
+                            System.out.println("Address " + result[4]);
+                            System.out.println("Initial Balance " + result[5]);
                         }
                     } else if (response.equalsIgnoreCase("3")) {
-                        // Additional communication for option 3
                         message = (String) in.readObject();
 
                         int temp = Integer.parseInt(message);
@@ -88,9 +105,12 @@ public class Requester {
 
                             String[] result = message.split("[*]");
 
-                            System.out.println("Title " + result[0]);
-                            System.out.println("Author " + result[1]);
-                            System.out.println("Price " + result[2]);
+                            System.out.println("Name " + result[0]);
+                            System.out.println("PPS Number " + result[1]);
+                            System.out.println("Email " + result[2]);
+							System.out.println("Password " + result[3]);
+                            System.out.println("Address " + result[4]);
+                            System.out.println("Initial Balance " + result[5]);
                         }
                     }
 
@@ -112,7 +132,7 @@ public class Requester {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         } finally {
-            // Step 4: Closing connection
+            // Closing connection
             try {
                 in.close();
                 out.close();
@@ -123,7 +143,7 @@ public class Requester {
         }
     }
 
-    // Method to send a message to the server
+    // Send a message to the server
     void sendMessage(String msg) {
         try {
             out.writeObject(msg);
@@ -135,7 +155,7 @@ public class Requester {
     }
 
     public static void main(String args[]) {
-        // Create an instance of Requester and start the communication
+        // Create Instance of Requester and run
         Requester client = new Requester();
         client.run();
     }

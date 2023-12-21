@@ -4,17 +4,17 @@ import java.net.*;
 public class Provider {
 	
 	public static void main(String args[]) {
+		//Create instance of socket and logins
 		ServerSocket providerSocket;
-		Logins myList = new Logins(); // Create an instance of the Lib class for book operations
+		Logins myList = new Logins(); 
 		try {
-			// 1. Create a ServerSocket on port 2006 with a backlog of 10 connections
+			// Create a server socket with port and backlogs
 			providerSocket = new ServerSocket(2006, 10);
 
 			while (true) {
-				// 2. Wait for connection
 				System.out.println("Waiting for connection");
 
-				// Create a new thread (ServerThread) for each connection to handle communication and accept a connection from a client
+				// Create a new thread for each connection to accept a connection from a client and run
 				Socket connection = providerSocket.accept();
 				ServerThread T1 = new ServerThread(connection, myList);
 				T1.start();
@@ -27,11 +27,9 @@ public class Provider {
 				ServerThread T3 = new ServerThread(connection3, myList);
 				T3.start();
 			}
-			// The serverSocket.close() is commented out because the server runs indefinitely,
-			// but you may want to close it in a different context (e.g., when the server is stopped).
-			// providerSocket.close();
+			// serverSocket.close() 
 		} catch (IOException e1) {
-			// Handle IO exceptions (e.g., if there is an issue with creating the ServerSocket)
+			// Handle IO exceptions
 			e1.printStackTrace();
 		}
 	}
