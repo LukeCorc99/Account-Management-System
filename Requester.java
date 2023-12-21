@@ -33,7 +33,7 @@ public class Requester {
                     System.out.println(message);
 
                     // Get user response
-                    response = input.next();
+                    response = input.nextLine();
                     // Send the user response to the server
                     sendMessage(response);
 
@@ -78,7 +78,7 @@ public class Requester {
                         message = (String) in.readObject();
                         System.out.println(message);
 
-                        response = input.next();
+                        response = input.nextLine();
                         sendMessage(response);
 
                         message = (String) in.readObject();
@@ -118,7 +118,7 @@ public class Requester {
                     message = (String) in.readObject();
                     System.out.println(message);
 
-                    response = input.next();
+                    response = input.nextLine();
                     sendMessage(response);
 
                 } while (response.equalsIgnoreCase("1"));
