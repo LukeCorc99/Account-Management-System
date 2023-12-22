@@ -103,7 +103,7 @@ public class Requester {
                             System.out.println("Initial Balance: " + result[5] + "\n");
                             do {
                                 System.out.println(
-                                        "Enter 1 to show all registered users\n2 to add money to your account\n3 to transfer funds\nOr any other button to exit ");
+                                        "Enter 1 to show all registered users\n2 to add money to your account\n3 to transfer funds\n4 to change password\nOr any other button to exit ");
 
                                 // Get user response
                                 response2 = input.nextLine();
@@ -179,8 +179,22 @@ public class Requester {
 
                                 }
                                 if (response2.equalsIgnoreCase("4")) {
+                                    message = (String) in.readObject();
+                                    System.out.println(message);
 
+                                    response = input.nextLine();
+                                    sendMessage(response);
+
+                                    message = (String) in.readObject();
+                                    System.out.println(message);
+
+                                    response = input.nextLine();
+                                    sendMessage(response);
+
+                                    message = (String) in.readObject();
+                                    System.out.println(message);
                                 }
+
                             } while (response2.equalsIgnoreCase("1") || response2.equalsIgnoreCase("2") ||
                                     response2.equalsIgnoreCase("3") || response2.equalsIgnoreCase("4"));
                         }

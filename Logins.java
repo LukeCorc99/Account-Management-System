@@ -144,6 +144,26 @@ public class Logins {
         return result;
     }
 
+     // Method to search for an account by name
+    public synchronized String changePassword(String password, String passChange) {
+        Account temp;
+        int found = 0;
+        Iterator<Account> i = myList.iterator();
+        String result = "Not found";
+
+        while (i.hasNext() && found == 0) {
+            temp = i.next();
+            if (temp.getPassword().equals(password)) {
+            // Update the account balance
+            temp.setPassword(passChange);
+            result = "Password changed successfully";
+            found = 1;
+            }
+        }
+
+        return result;
+    }
+
     // Method to get a list of all accounts in database
     public synchronized String[] listOfAccounts() {
         Account temp;

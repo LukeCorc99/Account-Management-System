@@ -120,6 +120,23 @@ public class ServerThread extends Thread {
 
                         }
 
+                         // Change password
+                        if (message3.equalsIgnoreCase("4")) {
+                            sendMessage("Enter current password:");
+                            String oldPassword = (String) in.readObject();
+
+                            sendMessage("Enter new password");
+                            String newPassword = (String) in.readObject();
+
+                            String passwordChanged = allLogins.changePassword(oldPassword, newPassword);
+
+                            if (!passwordChanged.equalsIgnoreCase("Not found")) {
+                                String result4 = "Password changed";
+                                sendMessage(result4);
+                            }
+
+                        }
+
                     } while (message3.equalsIgnoreCase("1") || message3.equalsIgnoreCase("2") ||
                             message3.equalsIgnoreCase("3") || message3.equalsIgnoreCase("4"));
                 }
