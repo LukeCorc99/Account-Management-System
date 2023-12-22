@@ -96,8 +96,15 @@ public class ServerThread extends Thread {
                         }
                         // Transfer money
                         if (message3.equalsIgnoreCase("3")) {
+
+                            sendMessage("Enter your name:");
+                            String fromName = (String) in.readObject();
+
                             sendMessage("Enter password:");
                             String fromPassword = (String) in.readObject();
+
+                            sendMessage("Enter name of account to transfer to:");
+                            String toName = (String) in.readObject();
 
                             sendMessage("Enter email of account you want to transfer:");
                             String toEmail = (String) in.readObject();
@@ -108,9 +115,10 @@ public class ServerThread extends Thread {
                             sendMessage("Enter the amount to transfer:");
                             float transferAmount = Float.parseFloat((String) in.readObject());
 
-                            String transferFromResult = allLogins.transferMoneyfromAccount(fromPassword,
+                            String transferFromResult = allLogins.transferMoneyfromAccount(fromName, fromPassword,
                                     transferAmount);
-                            String transferToResult = allLogins.transferMoneytoAccount(toEmail, toPps, transferAmount);
+                            String transferToResult = allLogins.transferMoneytoAccount(toName, toEmail, toPps,
+                                    transferAmount);
 
                             if (!transferFromResult.equalsIgnoreCase("Not found")
                                     && !transferToResult.equalsIgnoreCase("Not found")) {
@@ -120,7 +128,7 @@ public class ServerThread extends Thread {
 
                         }
 
-                         // Change password
+                        // Change password
                         if (message3.equalsIgnoreCase("4")) {
                             sendMessage("Enter current password:");
                             String oldPassword = (String) in.readObject();
@@ -135,6 +143,23 @@ public class ServerThread extends Thread {
                                 sendMessage(result4);
                             }
 
+                        }
+
+                        // View list of transactions:
+                        if (message3.equalsIgnoreCase("5")) {
+                            sendMessage("Enter name:");
+                            String transactionName = (String) in.readObject();
+
+                            String[] transactions = allLogins.listOfTransactions(transactionName);
+
+                            if (transactions != null && transactions.length > 0) {
+                                sendMessage("Transactions for " + transactionName + ":");
+                                for (String transaction : transactions) {
+                                    sendMessage(transaction);
+                                }
+                            } else {
+                                sendMessage("No transactions found for " + transactionName);
+                            }
                         }
 
                     } while (message3.equalsIgnoreCase("1") || message3.equalsIgnoreCase("2") ||

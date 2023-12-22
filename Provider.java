@@ -26,6 +26,14 @@ public class Provider {
 				Socket connection3 = providerSocket.accept();
 				ServerThread T3 = new ServerThread(connection3, myList);
 				T3.start();
+
+				Socket connection4 = providerSocket.accept();
+				ServerThread T4 = new ServerThread(connection4, myList);
+				T4.start();
+				
+				Socket connection5 = providerSocket.accept();
+				ServerThread T5 = new ServerThread(connection5, myList);
+				T5.start();
 			}
 			// serverSocket.close() 
 		} catch (IOException e1) {
