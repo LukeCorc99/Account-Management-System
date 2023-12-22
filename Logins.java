@@ -85,7 +85,7 @@ public class Logins {
     }
 
      // Method to search for an account by name
-    public synchronized String addMoney(String name, String password, float addAmount) {
+    public synchronized String addMoney(String password, float addAmount) {
         Account temp;
         int found = 0;
         Iterator<Account> i = myList.iterator();
@@ -93,11 +93,11 @@ public class Logins {
 
         while (i.hasNext() && found == 0) {
             temp = i.next();
-            if (temp.getName().equalsIgnoreCase(name) && temp.getPassword().equals(password)) {
-                // Update the account balance
+            if (temp.getPassword().equals(password)) {
+            // Update the account balance
             temp.setInitialBalance(temp.getInitialBalance() + addAmount);
-            result = "Money added successfully. " + temp.toString();
-                found = 1;
+            result = "Money added successfully.";
+            found = 1;
             }
         }
 

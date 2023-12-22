@@ -83,16 +83,14 @@ public class ServerThread extends Thread {
 
                         // Add money to balance
                         if (message3.equalsIgnoreCase("2")) {
-                            sendMessage("Please enter the name");
+
+                            sendMessage("Please enter the password:");
                             message1 = (String) in.readObject();
 
-                            sendMessage("Please enter the password");
-                            message2 = (String) in.readObject();
-
-                            sendMessage("Please enter the amount to add");
+                            sendMessage("Please enter the amount to add:");
                             float amountToAdd = Float.parseFloat((String) in.readObject());
 
-                            String result2 = allLogins.addMoney(message1, message2, amountToAdd);
+                            String result2 = allLogins.addMoney(message1, amountToAdd);
                             sendMessage(result2);
 
                         }

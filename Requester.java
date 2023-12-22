@@ -130,11 +130,6 @@ public class Requester {
                             }
 
                             if (response2.equalsIgnoreCase("2")) {
-                        message = (String) in.readObject();
-                        System.out.println(message);
-
-                        response = input.nextLine();
-                        sendMessage(response);
 
                         message = (String) in.readObject();
                         System.out.println(message);
