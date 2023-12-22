@@ -84,6 +84,26 @@ public class Logins {
         return result;
     }
 
+     // Method to search for an account by name
+    public synchronized String addMoney(String name, String password, float addAmount) {
+        Account temp;
+        int found = 0;
+        Iterator<Account> i = myList.iterator();
+        String result = "Not found";
+
+        while (i.hasNext() && found == 0) {
+            temp = i.next();
+            if (temp.getName().equalsIgnoreCase(name) && temp.getPassword().equals(password)) {
+                // Update the account balance
+            temp.setInitialBalance(temp.getInitialBalance() + addAmount);
+            result = "Money added successfully. " + temp.toString();
+                found = 1;
+            }
+        }
+
+        return result;
+    }
+
     // Method to get a list of all accounts in database
     public synchronized String[] listOfAccounts() {
         Account temp;

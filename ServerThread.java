@@ -70,32 +70,36 @@ public class ServerThread extends Thread {
                     sendMessage(result);
 
                     message3 = (String) in.readObject();
-                    
+
                     // Return all registered accounts
                     if (message3.equalsIgnoreCase("1")) {
-                    String[] temp = allLogins.listOfAccounts();
-                    sendMessage("" + temp.length);
+                        String[] temp = allLogins.listOfAccounts();
+                        sendMessage("" + temp.length);
 
-                    for (int i = 0; i < temp.length; i++) {
-                        sendMessage(temp[i]);
+                        for (int i = 0; i < temp.length; i++) {
+                            sendMessage(temp[i]);
+                        }
                     }
-                    
-                    
-                } 
-   
-            }     
 
-            // Return all registered accounts
-                    if (message.equalsIgnoreCase("3")) {
-                    String[] temp = allLogins.listOfAccounts();
-                    sendMessage("" + temp.length);
+                        // Add money to balance
+                        if (message3.equalsIgnoreCase("2")) {
+                            sendMessage("Please enter the name");
+                            message1 = (String) in.readObject();
 
-                    for (int i = 0; i < temp.length; i++) {
-                        sendMessage(temp[i]);
+                            sendMessage("Please enter the password");
+                            message2 = (String) in.readObject();
+
+                            sendMessage("Please enter the amount to add");
+                            float amountToAdd = Float.parseFloat((String) in.readObject());
+
+                            String result2 = allLogins.addMoney(message1, message2, amountToAdd);
+                            sendMessage(result2);
+
+                        }
+
                     }
-                    
-                    
-                }    
+
+                
 
                 // Prompt client to enter 1 to repeat or any other value to exit
                 sendMessage("Please enter 1 to repeat or any other value to exit");

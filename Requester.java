@@ -94,7 +94,7 @@ public class Requester {
                             System.out.println(message);
                         } else {
                             String[] result = message.split("[*]");
-                            System.out.println("Successfully logged in!");
+                            System.out.println("\nSuccessfully logged in!\n");
                             System.out.println("Name: " + result[0]);
                             System.out.println("PPS Number: " + result[1]);
                             System.out.println("Email: " + result[2]);
@@ -102,56 +102,58 @@ public class Requester {
                             System.out.println("Address: " + result[4]);
                             System.out.println("Initial Balance: " + result[5] + "\n");
 
-                            System.out.println("Enter 1 to show all registered users");
+                            System.out.println("Enter 1 to show all registered users, 2 to add money to your account");
 
-                    // Get user response
-                    response2 = input.nextLine();
-                    sendMessage(response2);
-
+                            // Get user response
+                            response2 = input.nextLine();
+                            sendMessage(response2);
 
                             if (response2.equalsIgnoreCase("1")) {
 
+                                message = (String) in.readObject();
+
+                                int temp = Integer.parseInt(message);
+
+                                for (int i = 0; i < temp; i++) {
+                                    message = (String) in.readObject();
+
+                                    String[] result1 = message.split("[*]");
+
+                                    System.out.println("Name: " + result1[0]);
+                                    System.out.println("PPS Number: " + result1[1]);
+                                    System.out.println("Email: " + result1[2]);
+                                    System.out.println("Password: (hidden)");
+                                    System.out.println("Address: " + result1[4]);
+                                    System.out.println("Initial Balance: " + result1[5] + "\n");
+
+                                }
+                            }
+
+                            if (response2.equalsIgnoreCase("2")) {
                         message = (String) in.readObject();
+                        System.out.println(message);
 
-                        int temp = Integer.parseInt(message);
-
-                        for (int i = 0; i < temp; i++) {
-                            message = (String) in.readObject();
-
-                            String[] result1 = message.split("[*]");
-
-                            System.out.println("Name: " + result1[0]);
-                            System.out.println("PPS Number: " + result1[1]);
-                            System.out.println("Email: " + result1[2]);
-                            System.out.println("Password: (hidden)");
-                            System.out.println("Address: " + result1[4]);
-                            System.out.println("Initial Balance: " + result1[5] + "\n");
-
-                           }
-                        }
-
-                        }
-
-                    }
-                    if (response.equalsIgnoreCase("3")) {
+                        response = input.nextLine();
+                        sendMessage(response);
 
                         message = (String) in.readObject();
+                        System.out.println(message);
 
-                        int temp = Integer.parseInt(message);
+                        response = input.nextLine();
+                        sendMessage(response);
 
-                        for (int i = 0; i < temp; i++) {
-                            message = (String) in.readObject();
+                        message = (String) in.readObject();
+                        System.out.println(message);
 
-                            String[] result1 = message.split("[*]");
+                        response = input.nextLine();
+                        sendMessage(response);
 
-                            System.out.println("Name: " + result1[0]);
-                            System.out.println("PPS Number: " + result1[1]);
-                            System.out.println("Email: " + result1[2]);
-                            System.out.println("Password: (hidden)");
-                            System.out.println("Address: " + result1[4]);
-                            System.out.println("Initial Balance: " + result1[5] + "\n");
+                        message = (String) in.readObject();
+                        System.out.println(message);
+                            }
 
                         }
+
                     }
 
                     // Repeat messaging
