@@ -94,6 +94,30 @@ public class ServerThread extends Thread {
                             sendMessage(result2);
 
                         }
+            // Transfer money
+            if (message3.equalsIgnoreCase("3")) {
+                sendMessage("Enter password:");
+                String fromPassword = (String) in.readObject();
+
+                sendMessage("Enter email of account you want to transfer:");
+                String toEmail = (String) in.readObject();
+
+                sendMessage("Enter PPS of account you want to transfer to:");
+                String toPps = (String) in.readObject();
+
+                sendMessage("Enter the amount to transfer:");
+                float transferAmount = Float.parseFloat((String) in.readObject());
+
+                String transferFromResult = allLogins.transferMoneyfromAccount(fromPassword, transferAmount);
+                String transferToResult = allLogins.transferMoneytoAccount(toEmail, toPps, transferAmount);
+
+                if(!transferFromResult.equalsIgnoreCase("Not found") && !transferToResult.equalsIgnoreCase("Not found")){
+                String result3 = "Successfully transferred";
+                sendMessage(result3);
+                }
+              
+            }
+                        
 
                     }
 

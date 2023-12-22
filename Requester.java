@@ -102,7 +102,7 @@ public class Requester {
                             System.out.println("Address: " + result[4]);
                             System.out.println("Initial Balance: " + result[5] + "\n");
 
-                            System.out.println("Enter 1 to show all registered users, 2 to add money to your account");
+                            System.out.println("Enter 1 to show all registered users\n2 to add money to your account\n3 to transfer funds ");
 
                             // Get user response
                             response2 = input.nextLine();
@@ -146,6 +146,40 @@ public class Requester {
                         message = (String) in.readObject();
                         System.out.println(message);
                             }
+
+                            if (response2.equalsIgnoreCase("3")) {
+
+                        message = (String) in.readObject();
+                        System.out.println(message);
+
+                        response = input.nextLine();
+                        sendMessage(response);
+
+                        message = (String) in.readObject();
+                        System.out.println(message);
+
+                        response = input.nextLine();
+                        sendMessage(response);
+
+                        message = (String) in.readObject();
+                        System.out.println(message);
+
+                        response = input.nextLine();
+                        sendMessage(response);
+
+                        message = (String) in.readObject();
+                        System.out.println(message);
+
+                        response = input.nextLine();
+                        sendMessage(response);
+
+                        message = (String) in.readObject();
+                        System.out.println(message);
+
+                        
+                            }
+
+                            
 
                         }
 

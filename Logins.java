@@ -84,6 +84,46 @@ public class Logins {
         return result;
     }
 
+    // Method to search for an account by name
+    public synchronized String transferMoneytoAccount(String email, String pps, float addAmount) {
+        Account temp;
+        int found = 0;
+        Iterator<Account> i = myList.iterator();
+        String result = "Not found";
+
+        while (i.hasNext() && found == 0) {
+            temp = i.next();
+            if (temp.getEmail().equalsIgnoreCase(email) && temp.getPpsNumber().equals(pps)) {
+                // Update the account balance
+                temp.setInitialBalance(temp.getInitialBalance() + addAmount);
+                result = temp.toString();
+                found = 1;
+            }
+        }
+
+        return result;
+    }
+
+        // Method to search for an account by name
+    public synchronized String transferMoneyfromAccount(String password, float subtractAmount) {
+        Account temp;
+        int found = 0;
+        Iterator<Account> i = myList.iterator();
+        String result = "Not found";
+
+        while (i.hasNext() && found == 0) {
+            temp = i.next();
+            if (temp.getPassword().equalsIgnoreCase(password)) {
+                // Update the account balance
+                temp.setInitialBalance(temp.getInitialBalance() - subtractAmount);
+                result = temp.toString();
+                found = 1;
+            }
+        }
+
+        return result;
+    }
+
      // Method to search for an account by name
     public synchronized String addMoney(String password, float addAmount) {
         Account temp;
