@@ -181,13 +181,15 @@ public class Requester {
                                     sendMessage(response);
 
                                     message = (String) in.readObject();
-                                    System.out.println(message);
-
+                                    System.out.println(message);     
+                                    
                                     response = input.nextLine();
                                     sendMessage(response);
 
                                     message = (String) in.readObject();
-                                    System.out.println(message);
+                                    System.out.println(message);                    
+                    
+                    
 
                                 }
                                 if (response2.equalsIgnoreCase("4")) {
@@ -207,21 +209,25 @@ public class Requester {
                                     System.out.println(message);
                                 }
                                  if (response2.equalsIgnoreCase("5")) {
-                                    message = (String) in.readObject();
-                                    System.out.println(message);
+                                     message = (String) in.readObject();
 
-                                    response = input.nextLine();
-                                    sendMessage(response);
+                                    int temp = Integer.parseInt(message);
 
-                                    message = (String) in.readObject();
-                                    System.out.println(message);
+                                    for (int i = 0; i < temp; i++) {
+                                        message = (String) in.readObject();
 
-                                    response = input.nextLine();
-                                    sendMessage(response);
+                                        String[] result1 = message.split("[*]");
 
-                                    message = (String) in.readObject();
-                                    System.out.println(message);
+                                        System.out.println("Name: " + result1[0]);
+                                        System.out.println("PPS Number: " + result1[1]);
+                                        System.out.println("Email: " + result1[2]);
+                                        System.out.println("Password: (hidden)");
+                                        System.out.println("Address: " + result1[4]);
+                                        System.out.println("Initial Balance: " + result1[5] + "\n");
+
+                                    }
                                 }
+                                
 
                             } while (response2.equalsIgnoreCase("1") || response2.equalsIgnoreCase("2") ||
                                     response2.equalsIgnoreCase("3") || response2.equalsIgnoreCase("4")|| response2.equalsIgnoreCase("5"));

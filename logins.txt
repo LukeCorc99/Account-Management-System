@@ -1,2 +1,0 @@
-paul 99 p@gmail.com paul pppp 1000
-luke 99 l@gmail luke luke 72 1000
