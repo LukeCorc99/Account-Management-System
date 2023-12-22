@@ -68,18 +68,18 @@ public class ServerThread extends Thread {
 
                     String result = allLogins.searchAccount(message1, message2);
                     sendMessage(result);
+                    do {
+                        message3 = (String) in.readObject();
 
-                    message3 = (String) in.readObject();
+                        // Return all registered accounts
+                        if (message3.equalsIgnoreCase("1")) {
+                            String[] temp = allLogins.listOfAccounts();
+                            sendMessage("" + temp.length);
 
-                    // Return all registered accounts
-                    if (message3.equalsIgnoreCase("1")) {
-                        String[] temp = allLogins.listOfAccounts();
-                        sendMessage("" + temp.length);
-
-                        for (int i = 0; i < temp.length; i++) {
-                            sendMessage(temp[i]);
+                            for (int i = 0; i < temp.length; i++) {
+                                sendMessage(temp[i]);
+                            }
                         }
-                    }
 
                         // Add money to balance
                         if (message3.equalsIgnoreCase("2")) {
@@ -94,37 +94,38 @@ public class ServerThread extends Thread {
                             sendMessage(result2);
 
                         }
-            // Transfer money
-            if (message3.equalsIgnoreCase("3")) {
-                sendMessage("Enter password:");
-                String fromPassword = (String) in.readObject();
+                        // Transfer money
+                        if (message3.equalsIgnoreCase("3")) {
+                            sendMessage("Enter password:");
+                            String fromPassword = (String) in.readObject();
 
-                sendMessage("Enter email of account you want to transfer:");
-                String toEmail = (String) in.readObject();
+                            sendMessage("Enter email of account you want to transfer:");
+                            String toEmail = (String) in.readObject();
 
-                sendMessage("Enter PPS of account you want to transfer to:");
-                String toPps = (String) in.readObject();
+                            sendMessage("Enter PPS of account you want to transfer to:");
+                            String toPps = (String) in.readObject();
 
-                sendMessage("Enter the amount to transfer:");
-                float transferAmount = Float.parseFloat((String) in.readObject());
+                            sendMessage("Enter the amount to transfer:");
+                            float transferAmount = Float.parseFloat((String) in.readObject());
 
-                String transferFromResult = allLogins.transferMoneyfromAccount(fromPassword, transferAmount);
-                String transferToResult = allLogins.transferMoneytoAccount(toEmail, toPps, transferAmount);
+                            String transferFromResult = allLogins.transferMoneyfromAccount(fromPassword,
+                                    transferAmount);
+                            String transferToResult = allLogins.transferMoneytoAccount(toEmail, toPps, transferAmount);
 
-                if(!transferFromResult.equalsIgnoreCase("Not found") && !transferToResult.equalsIgnoreCase("Not found")){
-                String result3 = "Successfully transferred";
-                sendMessage(result3);
+                            if (!transferFromResult.equalsIgnoreCase("Not found")
+                                    && !transferToResult.equalsIgnoreCase("Not found")) {
+                                String result3 = "Successfully transferred";
+                                sendMessage(result3);
+                            }
+
+                        }
+
+                    } while (message3.equalsIgnoreCase("1") || message3.equalsIgnoreCase("2") ||
+                            message3.equalsIgnoreCase("3") || message3.equalsIgnoreCase("4"));
                 }
-              
-            }
-                        
-
-                    }
-
-                
 
                 // Prompt client to enter 1 to repeat or any other value to exit
-                sendMessage("Please enter 1 to repeat or any other value to exit");
+                sendMessage("Please enter 1 to login/register or any other button to exit");
                 message1 = (String) in.readObject();
 
             } while (message1.equalsIgnoreCase("1"));

@@ -101,86 +101,88 @@ public class Requester {
                             System.out.println("Password: (hidden)");
                             System.out.println("Address: " + result[4]);
                             System.out.println("Initial Balance: " + result[5] + "\n");
+                            do {
+                                System.out.println(
+                                        "Enter 1 to show all registered users\n2 to add money to your account\n3 to transfer funds\nOr any other button to exit ");
 
-                            System.out.println("Enter 1 to show all registered users\n2 to add money to your account\n3 to transfer funds ");
+                                // Get user response
+                                response2 = input.nextLine();
+                                sendMessage(response2);
 
-                            // Get user response
-                            response2 = input.nextLine();
-                            sendMessage(response2);
+                                if (response2.equalsIgnoreCase("1")) {
 
-                            if (response2.equalsIgnoreCase("1")) {
-
-                                message = (String) in.readObject();
-
-                                int temp = Integer.parseInt(message);
-
-                                for (int i = 0; i < temp; i++) {
                                     message = (String) in.readObject();
 
-                                    String[] result1 = message.split("[*]");
+                                    int temp = Integer.parseInt(message);
 
-                                    System.out.println("Name: " + result1[0]);
-                                    System.out.println("PPS Number: " + result1[1]);
-                                    System.out.println("Email: " + result1[2]);
-                                    System.out.println("Password: (hidden)");
-                                    System.out.println("Address: " + result1[4]);
-                                    System.out.println("Initial Balance: " + result1[5] + "\n");
+                                    for (int i = 0; i < temp; i++) {
+                                        message = (String) in.readObject();
+
+                                        String[] result1 = message.split("[*]");
+
+                                        System.out.println("Name: " + result1[0]);
+                                        System.out.println("PPS Number: " + result1[1]);
+                                        System.out.println("Email: " + result1[2]);
+                                        System.out.println("Password: (hidden)");
+                                        System.out.println("Address: " + result1[4]);
+                                        System.out.println("Initial Balance: " + result1[5] + "\n");
+
+                                    }
+                                }
+
+                                if (response2.equalsIgnoreCase("2")) {
+
+                                    message = (String) in.readObject();
+                                    System.out.println(message);
+
+                                    response = input.nextLine();
+                                    sendMessage(response);
+
+                                    message = (String) in.readObject();
+                                    System.out.println(message);
+
+                                    response = input.nextLine();
+                                    sendMessage(response);
+
+                                    message = (String) in.readObject();
+                                    System.out.println(message);
+                                }
+
+                                if (response2.equalsIgnoreCase("3")) {
+
+                                    message = (String) in.readObject();
+                                    System.out.println(message);
+
+                                    response = input.nextLine();
+                                    sendMessage(response);
+
+                                    message = (String) in.readObject();
+                                    System.out.println(message);
+
+                                    response = input.nextLine();
+                                    sendMessage(response);
+
+                                    message = (String) in.readObject();
+                                    System.out.println(message);
+
+                                    response = input.nextLine();
+                                    sendMessage(response);
+
+                                    message = (String) in.readObject();
+                                    System.out.println(message);
+
+                                    response = input.nextLine();
+                                    sendMessage(response);
+
+                                    message = (String) in.readObject();
+                                    System.out.println(message);
 
                                 }
-                            }
+                                if (response2.equalsIgnoreCase("4")) {
 
-                            if (response2.equalsIgnoreCase("2")) {
-
-                        message = (String) in.readObject();
-                        System.out.println(message);
-
-                        response = input.nextLine();
-                        sendMessage(response);
-
-                        message = (String) in.readObject();
-                        System.out.println(message);
-
-                        response = input.nextLine();
-                        sendMessage(response);
-
-                        message = (String) in.readObject();
-                        System.out.println(message);
-                            }
-
-                            if (response2.equalsIgnoreCase("3")) {
-
-                        message = (String) in.readObject();
-                        System.out.println(message);
-
-                        response = input.nextLine();
-                        sendMessage(response);
-
-                        message = (String) in.readObject();
-                        System.out.println(message);
-
-                        response = input.nextLine();
-                        sendMessage(response);
-
-                        message = (String) in.readObject();
-                        System.out.println(message);
-
-                        response = input.nextLine();
-                        sendMessage(response);
-
-                        message = (String) in.readObject();
-                        System.out.println(message);
-
-                        response = input.nextLine();
-                        sendMessage(response);
-
-                        message = (String) in.readObject();
-                        System.out.println(message);
-
-                        
-                            }
-
-                            
-
+                                }
+                            } while (response2.equalsIgnoreCase("1") || response2.equalsIgnoreCase("2") ||
+                                    response2.equalsIgnoreCase("3") || response2.equalsIgnoreCase("4"));
                         }
 
                     }
