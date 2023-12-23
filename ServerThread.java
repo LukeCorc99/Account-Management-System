@@ -150,15 +150,11 @@ public class ServerThread extends Thread {
                             sendMessage("Enter name:");
                             String transactionName = (String) in.readObject();
 
-                            String[] transactions = allLogins.listOfTransactions(transactionName);
+                            String[] temp = allLogins.listOfTransactions(transactionName);
+                            sendMessage("" + temp.length);
 
-                            if (transactions != null && transactions.length > 0) {
-                                sendMessage("Transactions for " + transactionName + ":");
-                                for (String transaction : transactions) {
-                                    sendMessage(transaction);
-                                }
-                            } else {
-                                sendMessage("No transactions found for " + transactionName);
+                            for (int i = 0; i < temp.length; i++) {
+                                sendMessage(temp[i]);
                             }
                         }
 

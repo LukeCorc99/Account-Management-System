@@ -209,24 +209,30 @@ public class Requester {
                                     System.out.println(message);
                                 }
                                  if (response2.equalsIgnoreCase("5")) {
-                                     message = (String) in.readObject();
+                                    message = (String) in.readObject();
+                                    System.out.println(message);
+
+                                    response = input.nextLine();
+                                    sendMessage(response);
+
+                                    message = (String) in.readObject();
 
                                     int temp = Integer.parseInt(message);
 
                                     for (int i = 0; i < temp; i++) {
                                         message = (String) in.readObject();
 
-                                        String[] result1 = message.split("[*]");
+                                        String[] result2 = message.split("[*]");
+                                         
+                                        System.out.println("Name: " + result2[0]);
+                                         System.out.println("Initial balance: " + result2[1]);
 
-                                        System.out.println("Name: " + result1[0]);
-                                        System.out.println("PPS Number: " + result1[1]);
-                                        System.out.println("Email: " + result1[2]);
-                                        System.out.println("Password: (hidden)");
-                                        System.out.println("Address: " + result1[4]);
-                                        System.out.println("Initial Balance: " + result1[5] + "\n");
+                                       for (int x = 2; x < result2.length; x++) {
+                                             System.out.println(result2[x]);
+                                         }
 
-                                    }
                                 }
+                            }
                                 
 
                             } while (response2.equalsIgnoreCase("1") || response2.equalsIgnoreCase("2") ||

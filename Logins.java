@@ -62,7 +62,7 @@ public class Logins {
             String fileName = n + ".txt";
             FileWriter fileWriter = new FileWriter(fileName, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(n + " " + p + " " + Float.parseFloat(i) + " ");
+            bufferedWriter.write(n + " " + Float.parseFloat(i) + " ");
             bufferedWriter.close();
             fileWriter.close();
         } catch (IOException e) {
