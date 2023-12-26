@@ -60,6 +60,7 @@ public class ServerThread extends Thread {
 
                     // Login
                 } else if (message.equalsIgnoreCase("2")) {
+                    do{
                     sendMessage("Please enter the name");
                     message1 = (String) in.readObject();
 
@@ -68,6 +69,9 @@ public class ServerThread extends Thread {
 
                     String result = allLogins.searchAccount(message1, message2);
                     sendMessage(result);
+                   
+
+                    // If account is found, prompt user to enter 1 to view balance, 2 to add money, 3 to transfer money etc
                     do {
                         message3 = (String) in.readObject();
 
@@ -126,6 +130,11 @@ public class ServerThread extends Thread {
                                 sendMessage(result3);
                             }
 
+                            else {
+                                sendMessage(transferFromResult);
+                            
+                            }
+
                         }
 
                         // Change password
@@ -141,6 +150,11 @@ public class ServerThread extends Thread {
                             if (!passwordChanged.equalsIgnoreCase("Not found")) {
                                 String result4 = "Password changed";
                                 sendMessage(result4);
+                            }
+
+                            else {
+                                sendMessage(passwordChanged);
+                            
                             }
 
                         }
@@ -160,8 +174,10 @@ public class ServerThread extends Thread {
                         }
 
                     } while (message3.equalsIgnoreCase("1") || message3.equalsIgnoreCase("2") ||
-                            message3.equalsIgnoreCase("3") || message3.equalsIgnoreCase("4"));
-                }
+                                    message3.equalsIgnoreCase("3") || message3.equalsIgnoreCase("4"));
+              
+                                
+            
 
                 // Prompt client to enter 1 to repeat or any other value to exit
                 sendMessage("Please enter 1 to login/register or any other button to exit");

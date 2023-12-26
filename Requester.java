@@ -255,7 +255,7 @@ public class Requester {
                 e.printStackTrace();
             }
 
-            //Error handling
+            //Error
         } catch (UnknownHostException unknownHost) {
             System.err.println("You are trying to connect to an unknown host!");
         } catch (IOException ioException) {
