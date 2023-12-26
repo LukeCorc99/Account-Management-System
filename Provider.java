@@ -8,7 +8,7 @@ public class Provider {
 		ServerSocket providerSocket;
 		Logins myList = new Logins(); 
 		try {
-			// Create a server socket with port and backlogs
+			// Server socket with port and backlogs
 			providerSocket = new ServerSocket(2006, 10);
 
 			while (true) {
