@@ -3,6 +3,7 @@ import java.io.*;
 
 public class ServerThread extends Thread {
 
+    //Variables to store socket, input and output streams, and messages
     Socket myConnection;
     ObjectOutputStream out;
     ObjectInputStream in;
@@ -55,7 +56,6 @@ public class ServerThread extends Thread {
                     sendMessage("Please enter Initial Balance:");
                     message6 = (String) in.readObject();
 
-                    // Register account
                     allLogins.addAccount(message1, message2, message3, message4, message5, message6);
 
                     // Login
@@ -151,11 +151,12 @@ public class ServerThread extends Thread {
                             String transactionName = (String) in.readObject();
 
                             String[] temp = allLogins.listOfTransactions(transactionName);
-                            sendMessage("" + temp.length);
 
+                            sendMessage("" + temp.length);
                             for (int i = 0; i < temp.length; i++) {
                                 sendMessage(temp[i]);
                             }
+
                         }
 
                     } while (message3.equalsIgnoreCase("1") || message3.equalsIgnoreCase("2") ||

@@ -40,12 +40,11 @@ public class Logins {
             // Handle the case where the file is not found
             e.printStackTrace();
         } catch (IOException e) {
-            // Handle IO exceptions
             e.printStackTrace();
         }
     }
 
-    // Method to add an account to the logins data
+    // Add an account to the logins data
     public synchronized void addAccount(String n, String pps, String em, String p, String a, String i) {
         Account temp = new Account(n, pps, em, p, a, Float.parseFloat(i));
         String line;
@@ -58,12 +57,9 @@ public class Logins {
             bR.append(line);
             bR.close();
             fR.close();
-            // Create a file named 'n + ".txt"'
+            // Create a file with name of person for storing transactions
             String fileName = n + ".txt";
             FileWriter fileWriter = new FileWriter(fileName, true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(n + " " + Float.parseFloat(i) + " ");
-            bufferedWriter.close();
             fileWriter.close();
         } catch (IOException e) {
             // Handle IO exceptions
@@ -72,7 +68,7 @@ public class Logins {
 
     }
 
-    // Method to search for an account by name
+    // Search for an account by name
     public synchronized String searchAccount(String name, String password) {
         Account temp;
         int found = 0;
@@ -90,7 +86,7 @@ public class Logins {
         return result;
     }
 
-    // Method to search for an account by name
+    // Move money to another account
     public synchronized String transferMoneytoAccount(String toName, String email, String pps, float addAmount) {
         Account temp;
         int found = 0;
@@ -108,6 +104,7 @@ public class Logins {
             }
         }
 
+        // write to transaction file
         try {
             String fileName = toName + ".txt";
             FileWriter fileWriter = new FileWriter(fileName, true);
@@ -116,14 +113,13 @@ public class Logins {
             bufferedWriter.close();
             fileWriter.close();
         } catch (IOException e) {
-            // Handle IO exceptions
             e.printStackTrace();
         }
 
         return result;
     }
 
-    // Method to search for an account by name
+    // Move money from an account
     public synchronized String transferMoneyfromAccount(String fromName, String password, float subtractAmount) {
         Account temp;
         int found = 0;
@@ -140,6 +136,7 @@ public class Logins {
             }
         }
 
+        // write to transaction file
         try {
             String fileName = fromName + ".txt";
             FileWriter fileWriter = new FileWriter(fileName, true);
@@ -148,14 +145,13 @@ public class Logins {
             bufferedWriter.close();
             fileWriter.close();
         } catch (IOException e) {
-            // Handle IO exceptions
             e.printStackTrace();
         }
 
         return result;
     }
 
-    // Method to search for an account by name
+    // Add money to an account
     public synchronized String addMoney(String password, float addAmount) {
         Account temp;
         int found = 0;
@@ -175,7 +171,7 @@ public class Logins {
         return result;
     }
 
-    // Method to search for an account by name
+    // Change account password
     public synchronized String changePassword(String password, String passChange) {
         Account temp;
         int found = 0;
@@ -185,7 +181,6 @@ public class Logins {
         while (i.hasNext() && found == 0) {
             temp = i.next();
             if (temp.getPassword().equals(password)) {
-                // Update the account balance
                 temp.setPassword(passChange);
                 result = "Password changed successfully";
                 found = 1;
