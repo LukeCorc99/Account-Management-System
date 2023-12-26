@@ -69,8 +69,7 @@ public class ServerThread extends Thread {
 
                     String result = allLogins.searchAccount(message1, message2);
                     sendMessage(result);
-                   
-
+                    
                     // If account is found, prompt user to enter 1 to view balance, 2 to add money, 3 to transfer money etc
                     do {
                         message3 = (String) in.readObject();
