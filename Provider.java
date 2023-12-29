@@ -13,27 +13,13 @@ public class Provider {
 
 			while (true) {
 				System.out.println("Waiting for connection");
-
-				// Create a new thread for each connection to accept a connection from a client and run
+			
+				// Accept a connection from a client
 				Socket connection = providerSocket.accept();
+			
+				// Create a new thread for this connection and start it
 				ServerThread T1 = new ServerThread(connection, myList);
 				T1.start();
-				
-				Socket connection2 = providerSocket.accept();
-				ServerThread T2 = new ServerThread(connection2, myList);
-				T2.start();
-				
-				Socket connection3 = providerSocket.accept();
-				ServerThread T3 = new ServerThread(connection3, myList);
-				T3.start();
-
-				Socket connection4 = providerSocket.accept();
-				ServerThread T4 = new ServerThread(connection4, myList);
-				T4.start();
-				
-				Socket connection5 = providerSocket.accept();
-				ServerThread T5 = new ServerThread(connection5, myList);
-				T5.start();
 			}
 			// serverSocket.close() 
 		} catch (IOException e1) {
