@@ -25,13 +25,17 @@ public class Logins {
             FileReader fR = new FileReader("logins.txt");
             BufferedReader bR = new BufferedReader(fR);
 
+            //reads through each line until line is empty
             while ((line = bR.readLine()) != null) {
+                // Uses a string tokenizer to tokenize the line with a space as the delimiter
                 StringTokenizer st = new StringTokenizer(line, " ");
 
+                // Assigns each string to the index in the array
                 for (int i = 0; i < 6; i++) {
                     temp[i] = st.nextToken();
                 }
 
+                // Creates a new account object and adds it to the list
                 tempAccount = new Account(temp[0], temp[1], temp[2], temp[3], temp[4], Float.parseFloat(temp[5]));
                 myList.add(tempAccount);
             }
